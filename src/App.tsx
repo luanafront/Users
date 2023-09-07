@@ -1,11 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {PageNews} from "./pages/PageNews";
+import PageUsers from "./PageUsers";
 
 function App() {
   return (
-    <PageNews />
+    <PageUsers />
   );
 }
 

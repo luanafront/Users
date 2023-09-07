@@ -1,8 +1,8 @@
+import InputSearcher from "./InputSearcher";
+
 const PageUsersHeader = () => {
   return (
-    <div className="PageUsersHeader">
-      <h1>UsersHeader</h1>
-    </div>
+      <InputSearcher />
   )
 }
 
