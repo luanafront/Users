@@ -1,8 +1,9 @@
 import React from "react";
+import Pagination from "./Pagination";
 
 const PageUsersFooter = () => {
   return (
-    <PageUsersFooter/>
+    <Pagination/>
   )
 }
 export default PageUsersFooter

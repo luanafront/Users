@@ -1,0 +1,25 @@
+.inputSearcher {
+    width: 40%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ffff;
+    background-color: #171717;
+    padding: 0 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.pageUsersHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #2d2b2b;
+    padding-block: 10px 20px;
+}
+.pageUsersHeader__title {
+    margin: 0;
+    color: #ffff;
+    padding-block: 20px;
+    font-weight: bold;
+}

@@ -2,7 +2,10 @@ import InputSearcher from "./InputSearcher";
 
 const PageUsersHeader = () => {
   return (
-      <InputSearcher />
+    <header className='pageUsersHeader'>
+      <h1 className='pageUsersHeader__title'>List Users</h1>
+      <InputSearcher label={'Searcher user...'}/>
+    </header>
   )
 }
 

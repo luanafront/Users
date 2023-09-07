@@ -3,7 +3,9 @@ import PageUsers from "./PageUsers";
 
 function App() {
   return (
-    <PageUsers />
+    <>
+      <PageUsers />
+    </>
   );
 }
 
