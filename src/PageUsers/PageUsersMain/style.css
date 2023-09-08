@@ -1,0 +1,30 @@
+/* Estilizar a tabela */
+.tableUsers {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    color: #fff;
+    padding-top: 20px;
+}
+
+.tableUsers__titles th {
+    background-color: #811bc0;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+.tableUsers__texts .tableUsers__text td {
+    padding: 10px;
+}
+
+.tableUsers__text {
+    border-bottom: 1px solid #212121;
+}
+
+.tableUsers__texts .tableUsers__text button {
+    background-color: transparent;
+    border: none;
+    color: #811bc0;
+    cursor: pointer;
+}

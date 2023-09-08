@@ -1,6 +1,7 @@
 import React from "react";
 import axios, {AxiosResponse} from "axios";
 import { useQuery } from "react-query";
+import './style.css';
 
 interface Location {
   city: string;
@@ -77,11 +78,10 @@ const fetchUsers = async () => {
 
 const TableUsers = () => {
   const { data, isLoading, error } = useQuery("users", fetchUsers);
-  console.log(data)
     return (
-      <table>
-        <thead>
-          <tr>
+      <table className='tableUsers'>
+        <thead className='tableUsers__titles'>
+          <tr className='tableUsers__title'>
             <th>Id</th>
             <th>First name</th>
             <th>Last name</th>
@@ -91,9 +91,9 @@ const TableUsers = () => {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className='tableUsers__texts'>
           {data && data.results.map((user, index) => (
-            <tr key={index}>
+            <tr key={index} className='tableUsers__text'>
               <td>{user.id.value}</td>
               <td>{user.name.first}</td>
               <td>{user.name.last}</td>
