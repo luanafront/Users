@@ -71,13 +71,24 @@ interface UserResponse {
   results: User[]
 }
 
-const fetchUsers = async () => {
-  const { data }: AxiosResponse<UserResponse> = await axios.get("https://randomuser.me/api/?results=60");
-  return data;
+interface TableUsersProps {
+  currentPage?: number
 }
 
-const TableUsers = () => {
-  const { data, isLoading, error } = useQuery("users", fetchUsers);
+const TableUsers = ({currentPage = 1}: TableUsersProps) => {
+
+  const fetchUsers = async () => {
+    const { data }: AxiosResponse<UserResponse> = await axios.get("https://randomuser.me/api/?results=60");
+    setUsers(data.results)
+    return data;
+  }
+
+  const {isLoading} = useQuery("users", fetchUsers);
+  const [users, setUsers] = React.useState<User[]>([]);
+
+  const usersPerPage = 20;
+  const usersCurrentPage = users.slice((currentPage - 1) * usersPerPage, currentPage * usersPerPage);
+
     return (
       <table className='tableUsers'>
         <thead className='tableUsers__titles'>
@@ -92,7 +103,7 @@ const TableUsers = () => {
           </tr>
         </thead>
         <tbody className='tableUsers__texts'>
-          {data && data.results.map((user, index) => (
+          {isLoading ? 'loading...' : usersCurrentPage.map((user, index) => (
             <tr key={index} className='tableUsers__text'>
               <td>{user.id.value || '-'}</td>
               <td>{user.name.first}</td>
