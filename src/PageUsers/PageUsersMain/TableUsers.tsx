@@ -72,7 +72,7 @@ interface UserResponse {
 }
 
 const fetchUsers = async () => {
-  const { data }: AxiosResponse<UserResponse> = await axios.get("https://randomuser.me/api/");
+  const { data }: AxiosResponse<UserResponse> = await axios.get("https://randomuser.me/api/?results=60");
   return data;
 }
 
@@ -94,7 +94,7 @@ const TableUsers = () => {
         <tbody className='tableUsers__texts'>
           {data && data.results.map((user, index) => (
             <tr key={index} className='tableUsers__text'>
-              <td>{user.id.value}</td>
+              <td>{user.id.value || '-'}</td>
               <td>{user.name.first}</td>
               <td>{user.name.last}</td>
               <td>{user.name.title}</td>
