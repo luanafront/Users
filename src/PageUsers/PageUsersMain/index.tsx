@@ -1,14 +1,19 @@
 import React from "react";
 import TableUsers from "./TableUsers";
-import {QueryClient, QueryClientProvider} from "react-query";
+import {QueryClient} from "react-query";
+import {User} from "../@types";
 
-const queryClient = new QueryClient();
+interface PageUsersMainProps {
+  users: User[];
+  isLoading: boolean;
+}
 
-const PageUsersMain = () => {
+const PageUsersMain = ({users, isLoading}: PageUsersMainProps) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TableUsers/>
-    </QueryClientProvider>
+      <TableUsers
+        users={users}
+        isLoading={isLoading}
+      />
   )
 }
 export default PageUsersMain
