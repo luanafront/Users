@@ -15,7 +15,8 @@
 }
 
 .tableUsers__texts .tableUsers__text td {
-    padding: 10px;
+    padding: 10px 10px 10px 16px;
+    font-size: 14px;
 }
 
 .tableUsers__text {

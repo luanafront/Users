@@ -1,4 +1,5 @@
 import React from "react";
+import './style.css';
 
 interface PaginationProps {
   itemsPerPage: number;
@@ -20,8 +21,8 @@ const Pagination = ({itemsPerPage, itemsAmount, currentPage, setPage}: Paginatio
     }
 
     return (
-      <li className={`pagination__page ${currentPage === 1 ? 'pagination__page--disabled' : ''}`} onClick={handlePreviousPage}>
-        <button>{'<'}</button>
+      <li className={`pagination__page ${currentPage === 1 ? 'pagination__page--disabledPrevious' : ''}`} onClick={handlePreviousPage}>
+        <button className='pagination__page--buttonPrevious'>{'<'}</button>
       </li>
     )
   }
@@ -34,23 +35,23 @@ const Pagination = ({itemsPerPage, itemsAmount, currentPage, setPage}: Paginatio
     }
 
     return (
-      <li className={`pagination__page ${currentPage === 1 ? 'pagination__page--disabled' : ''}`} onClick={handleNextPage}>
-        <button>{'>'}</button>
+      <li className={`pagination__page ${currentPage === pagesAmount ? 'pagination__page--disabledNext' : ''}`} onClick={handleNextPage}>
+        <button className='pagination__page--buttonNext'>{'>'}</button>
       </li>
     )
   }
 
   return (
-    <ul>
+    <ul className='paginationList'>
       <PreviousPageButton />
       {
         Array.from(Array(pagesAmount).keys()).map((page) => {
             const currentPageButton = page + 1
             return (
               <li key={page}
-                  className={`pagination__page ${currentPageButton === currentPage ? 'pagination__page--active' : ''}`}
+                  className='pagination__page'
                   onClick={() => setPage(currentPageButton)}>
-                <button>{currentPageButton}</button>
+                <button className={`pagination__page--button ${currentPageButton === currentPage ? 'pagination__page--active' : ''}`}>{currentPageButton}</button>
               </li>
             )
           }
