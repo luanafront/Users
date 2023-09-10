@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './style.css';
 import {User} from "../@types";
+import {useNavigate} from "react-router-dom";
 
 interface TableUsersProps {
   isLoading: boolean,
@@ -8,6 +9,14 @@ interface TableUsersProps {
 }
 
 const TableUsers = ({isLoading, users}: TableUsersProps) => {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if(!user) return
+    localStorage.removeItem("user");
+  }, [])
+
     return (
       <table className='tableUsers'>
         <thead className='tableUsers__titles'>
@@ -31,7 +40,10 @@ const TableUsers = ({isLoading, users}: TableUsersProps) => {
               <td>{user.registered.date}</td>
               <td>{user.registered.age}</td>
               <td>
-                <button onClick={() => console.log(user.id.value)}>View Profile</button>
+                <button onClick={() => {
+                  localStorage.setItem("user", JSON.stringify(user));
+                  navigate('/detail')
+                }}>View Profile</button>
               </td>
             </tr>
           ))}

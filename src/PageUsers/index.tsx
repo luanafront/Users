@@ -2,23 +2,16 @@ import PageUsersHeader from "./PageUsersHeader";
 import PageUsersMain from "./PageUsersMain";
 import PageUsersFooter from "./PageUsersFooter";
 import './style.css';
-import axios, {AxiosResponse} from "axios";
-import {useQuery} from "react-query";
 import React from "react";
-import {User, UserResponse} from "./@types";
+import {User} from "./@types";
 
-
-const PageUsers = () => {
+interface PageUsersProps {
+  users: User[];
+  isLoading: boolean;
+}
+const PageUsers = ({users, isLoading}: PageUsersProps) => {
   const itemsPerPage = 20;
 
-  const fetchUsers = async () => {
-    const { data }: AxiosResponse<UserResponse> = await axios.get("https://randomuser.me/api/?results=60");
-    setUsers(data.results)
-    return data;
-  }
-
-  const {isLoading} = useQuery("users", fetchUsers);
-  const [users, setUsers] = React.useState<User[]>([]);
   const [filteredUsers, setFilteredUsers] = React.useState<User[]>([]);
   const [currentPage, setCurrentPage] = React.useState<number>(1);
 
