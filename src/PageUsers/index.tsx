@@ -19,18 +19,24 @@ const PageUsers = () => {
 
   const {isLoading} = useQuery("users", fetchUsers);
   const [users, setUsers] = React.useState<User[]>([]);
+  const [filteredUsers, setFilteredUsers] = React.useState<User[]>([]);
   const [currentPage, setCurrentPage] = React.useState<number>(1);
+
+  const usersToDisplay = filteredUsers.length > 0 ? filteredUsers : users;
 
   return (
     <div className='pageUsers'>
-      <PageUsersHeader />
+      <PageUsersHeader
+        setUsers={setFilteredUsers}
+        users={users}
+      />
       <PageUsersMain
-        users={users.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)}
+        users={usersToDisplay.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)}
         isLoading={isLoading}
       />
       <PageUsersFooter
         itemsPerPage={itemsPerPage}
-        itemsAmount={users.length}
+        itemsAmount={usersToDisplay.length}
         currentPage={currentPage}
         setPage={setCurrentPage}
       />
