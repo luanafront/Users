@@ -25,18 +25,14 @@ const PageUsers = () => {
     <div className='pageUsers'>
       <PageUsersHeader />
       <PageUsersMain
-        users={users}
+        users={users.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)}
         isLoading={isLoading}
       />
       <PageUsersFooter
         itemsPerPage={itemsPerPage}
         itemsAmount={users.length}
         currentPage={currentPage}
-        setPage={(page: number) => {
-          setCurrentPage(page)
-          const usersInPage = users.slice((page - 1) * itemsPerPage, page * itemsPerPage)
-          setUsers(usersInPage)
-        }}
+        setPage={setCurrentPage}
       />
     </div>
   )
