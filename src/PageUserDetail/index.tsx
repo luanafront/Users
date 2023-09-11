@@ -1,6 +1,6 @@
 import React from "react";
 import {User} from "../PageUsers/@types";
-import {useParams} from "react-router-dom";
+import PageUserDetailHeader from "./PageUserDetailHeader";
 
 interface PageUserDetailProps {
   users: User[];
@@ -12,19 +12,15 @@ const PageUserDetail = ({users}: PageUserDetailProps) => {
   const user = JSON.parse(userData);
 
   return (
-    <div style={{color: 'red'}}>
-      <div>
-        <img src={user.picture.large} alt="user"/>
-        <p>{user.name.first} {user.name.last}</p>
-        <p>{user.name.title}</p>
-      </div>
-      <div>
-        <p>Info</p>
-        <p></p>
-      </div>
-      <div>
-
-      </div>
+    <div className='pageUserDetail'>
+      <button
+        className='pageUserDetail__button'
+        onClick={() => {
+          localStorage.removeItem("user");
+          window.history.back();
+        }}
+      >Back</button>
+      <PageUserDetailHeader users={user}/>
     </div>
   )
 }
