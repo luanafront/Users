@@ -34,8 +34,54 @@
     align-items: center;
     padding: 20px;
 }
+.pageUserDetail__boxButton {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
 .pageUserDetail__button {
     background-color: transparent;
     border: 0;
     color: dimgray;
+    cursor: pointer;
+}
+
+
+.pageUserDetailMain {
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-width: 40vw;
+    color: #ffffff;
+    padding-top: 20px ;
+}
+.detailSectionInfo, .detailSectionLogin, .detailSectionLocation{
+    display: flex;
+    flex-direction: column;
+}
+.boxDetail__title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.boxDetail__text {
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.sectionTabs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.tabInfo, .tabLocation, .tabLogin {
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    padding:  5px 15px;
+    transition: all 0.3s ease-in-out;
+}
+.active {
+    border-bottom: 2px solid #811bc0;
 }

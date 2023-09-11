@@ -2,11 +2,11 @@ import React from "react";
 import {User} from "../../PageUsers/@types";
 import '../style.css'
 
-interface PageUserDetailProps {
+interface PageUserDetailHeaderProps {
   users: User[];
 }
 
-const PageUserDetailHeader = ({users}: PageUserDetailProps) => {
+const PageUserDetailHeader = ({users}: PageUserDetailHeaderProps) => {
   const userData = localStorage.getItem("user");
   if (!userData) return <div>Usuário não encontrado</div>
   const user = JSON.parse(userData);
