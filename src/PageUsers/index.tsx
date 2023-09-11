@@ -10,12 +10,16 @@ interface PageUsersProps {
   isLoading: boolean;
 }
 const PageUsers = ({users, isLoading}: PageUsersProps) => {
-  const itemsPerPage = 20;
+  const itemsPerPage = 10;
 
   const [filteredUsers, setFilteredUsers] = React.useState<User[]>([]);
   const [currentPage, setCurrentPage] = React.useState<number>(1);
 
   const usersToDisplay = filteredUsers.length > 0 ? filteredUsers : users;
+
+  React.useEffect(() => {
+    setCurrentPage(1)
+  },[filteredUsers])
 
   return (
     <div className='pageUsers'>
